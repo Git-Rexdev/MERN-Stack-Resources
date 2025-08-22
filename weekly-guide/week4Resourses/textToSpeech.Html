@@ -1,0 +1,113 @@
+  <style>
+    p{
+      color:red;
+      background:#fcccccaa;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+    }
+    body { margin:0; height:100vh; display:grid; place-items:center; background:#0b1020; font-family:system-ui, Arial; }
+    .box { width:min(720px, 92%); display:grid;}
+    textarea { width:100%; min-height:200px; padding:12px; border-radius:12px; border:1px solid #2b3352; background:#121936; color:#e8ecf1; font-size:16px; }
+    button { padding:12px 16px; border:0; border-radius:12px; background:#7c5cff; color:#fff; font-weight:600; cursor:pointer; }
+    button:active { transform: translateY(1px); }
+    /* ...existing code... */
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #2b3352;
+  background: #121936;
+  color: #e8ecf1;
+  font-size: 16px;
+  max-height: 150px;      /* Add this line */
+  overflow-y: auto;       /* Add this line */
+}
+
+  #h6Elem{
+        background: white;
+    color: black;
+    padding: 30px 7px;
+    }
+</style>
+<body>
+  <h6 class='mt-3'>Speech to Text API</h6>
+    <div class="container ">
+        <h6 id="h6Elem">Listening..</h6>
+        <button id="btnListen" class="btn btn-primary">Listen</button>
+
+    </div>
+
+  <div class="box">
+    <textarea id="text" placeholder="Type something to speak..."></textarea>
+     <p>Write something in text area</p>
+     <div>
+      <!-- <select id="selectlg"></select> -->
+      <button id="speak">Speak</button>
+     </div>
+  </div>
+
+<script>
+  //Speech to text 
+  h6Elem = document.querySelector('#h6Elem')
+btnListen = document.querySelector('#btnListen')
+       const synth = window.speechSynthesis;
+    const speech = new SpeechSynthesisUtterance();
+
+SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+recognition = new SpeechRecognition();
+
+recognition.onstart = function(){
+    console.log('Yes, Now You Can start to Talk');
+}
+
+recognition.onresult = function (e){
+    resultReceived = e.results[0][0].transcript;
+    h6Elem.textContent = resultReceived;
+        
+    // Speak the recognized text
+    const text = resultReceived.trim();
+ 
+    synth.cancel();
+    speech.text = text;
+    synth.speak(speech);
+}
+
+
+btnListen.addEventListener('click',function(){
+    h6Elem.textContent = 'Listening..'
+    recognition.start();
+})
+
+  //Text to speech 
+
+    // let voices = [];
+
+    // let voiceSelect = document.getElementById("selectlg");
+    // synth.onvoiceschanged = ()=>{
+    //   voices = synth.getVoices();
+
+    //   voices.forEach((voice, i)=>(voiceSelect.options[i] = new Option(voice.name,i)));
+    // };
+
+    // voiceSelect.addEventListener("change", () => {
+    //   speech.voice = voices[voiceSelect.value];
+    // });
+
+    document.getElementById("speak").addEventListener("click", () => {
+      const text = document.getElementById("text").value.trim();
+      //      const text = resultReceived.trim();
+
+      if (!text) {
+        document.querySelector("p").style.display = "block";
+        return;
+      };
+      document.querySelector("p").style.display = "none";
+      synth.cancel();            // stop anything already speaking
+      speech.text = text;
+      synth.speak(speech);
+    });
+
+
+</script>
