@@ -1,6 +1,6 @@
-# Code Crackers MERN Stack Learning Repository
+# MERN Stack Learning Repository
 
-Welcome to the official **Code Crackers MERN Stack Learning Repository**.  
+Welcome to the official **MERN Stack Learning Repository**.  
 This repository is designed as a 12-week structured guide to mastering full-stack development with the **MERN (MongoDB, Express.js, React, Node.js)** technology stack.
 
 ---
@@ -60,12 +60,12 @@ Each weekly file includes:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Git-Rexdev/Code-Crackers-MERN-Stack-Resources
+   git clone https://github.com/Git-Rexdev/MERN-Stack-Resources
    ```
 
 2. Navigate to the weekly guide folder:
    ```bash
-   cd Code-Crackers-MERN-Stack-Resources/weekly-guide
+   cd MERN-Stack-Resources/weekly-guide
    ```
 
 3. Open the markdown file for the current week to begin.
@@ -82,7 +82,7 @@ Each student should maintain a **private GitHub repository or Notion/Google Doc*
 
 ## Contribution & Usage
 
-This repository is maintained by the **Code Crackers Club** and is intended for educational purposes as part of the MERN Stack learning curriculum.
+This repository is maintained by the **Manmohan Zanwar** and is intended for educational purposes as part of the MERN Stack learning curriculum.
 
 ---
 
